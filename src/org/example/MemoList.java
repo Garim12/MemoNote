@@ -75,6 +75,7 @@ public class MemoList {
                 memo.setName(modifyName);
                 memo.setContent(modifyContent);
                 memo.setDate(modifyDate);
+                memo.setPassword(editMemo.getPassword());
 
                 int key = editNum-1;
 
