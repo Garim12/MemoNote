@@ -52,10 +52,7 @@ public class MemoPage {
 
 
     // 비밀번호 확인
-    private static void checkPwForm() {
-        // 비밀번호 확인은 수정, 삭제 기능 하는 분들의 상의가 필요.
-        // 삭제 기능은 이기능 사용 X
+    static boolean checkPwForm(Memo memo, String password) {
+        return memo.getPassword().equals(password);
     }
-
-
 }

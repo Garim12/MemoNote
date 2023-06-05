@@ -63,7 +63,7 @@ public class MemoList {
             System.out.print("비밀번호를 입력하세요: ");
             String password = scanner.nextLine();
 
-            if (password.equals(deleteMemo.getPassword())) {
+            if (MemoPage.checkPwForm(deleteMemo, password)) {
                 memoList.remove(deleteMemo);
                 reindexMemo(); // 글 삭제 후 글 번호 다시 붙여주기
                 System.out.println("글이 삭제되었습니다.");
