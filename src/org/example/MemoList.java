@@ -66,7 +66,7 @@ public class MemoList {
             if (MemoPage.checkPwForm(deleteMemo, password)) {
                 memoList.remove(deleteMemo);
                 reindexMemo(); // 글 삭제 후 글 번호 다시 붙여주기
-                System.out.println("글이 삭제되었습니다.");
+                System.out.println("\n글이 삭제되었습니다.");
             } else {
                 System.out.println("비밀번호가 일치하지 않습니다.");
             }
