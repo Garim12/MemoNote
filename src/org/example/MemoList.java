@@ -27,6 +27,7 @@ public class MemoList {
 
     // 메모 정보 출력
     public void printMemoList() {
+
         List<Memo> sortMemoList = new ArrayList<>();
         sortMemoList.addAll(memoList);
 
@@ -125,7 +126,6 @@ public class MemoList {
     }
 }
 
-// 정렬하기 위한 코드
 class idComparator implements Comparator<Memo> {
     @Override
     public int compare(Memo o1, Memo o2) {
