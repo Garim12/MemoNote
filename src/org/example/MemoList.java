@@ -1,10 +1,8 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+
+import static org.example.MemoApplication.displayMainPage;
 
 public class MemoList {
     private List<Memo> memoList;
@@ -56,7 +54,38 @@ public class MemoList {
     public void editMemo(int editNum) {
         Memo editMemo = getMemo(editNum); // 수정할 Memo
 
+        if(editMemo != null){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("비밀번호를 입력하세요: ");
+            String password = scanner.nextLine();
 
+            if (password.equals(editMemo.getPassword())) {
+                System.out.print("수정할 이름을 입력해주세요: ");
+                String modifyName = scanner.nextLine();
+
+                System.out.print("수정할 메모를 입력해주세요: ");
+                String modifyContent = scanner.nextLine();
+                Date modifyDate = new Date(); // 현재 날짜 지정.
+
+                //id랑 date는 MemoPage에서 할 예정
+                Memo memo = new Memo();
+
+                memo.setId(editNum);
+                memo.setName(modifyName);
+                memo.setContent(modifyContent);
+                memo.setDate(modifyDate);
+
+                int key = editNum-1;
+
+                memoList.set(key, memo);
+                System.out.println("메모가 수정되었습니다.");
+                displayMainPage();
+            } else {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+            }
+        } else {
+            System.out.println("존재하지 않는 글입니다.");
+        }
     }
 
     // 해당 글 삭제하는 메서드

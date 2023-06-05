@@ -12,7 +12,7 @@ public class MemoApplication {
     }
 
     // 메인 페이지 출력
-    private static void displayMainPage() {
+    public static void displayMainPage() {
         System.out.println("\n=====================================");
         System.out.println(" [[ Memo NOTE ]] ");
         System.out.println("원하는 항목 번호를 입력해주세요\n");
