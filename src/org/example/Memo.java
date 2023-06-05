@@ -61,5 +61,4 @@ public class Memo {
         String formatedNow = formatter.format(this.date);
         System.out.printf("\n작성일자: %s",formatedNow);
     }
-
 }
