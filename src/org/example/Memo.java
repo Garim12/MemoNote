@@ -1,5 +1,6 @@
 package org.example;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Memo {
@@ -16,7 +17,7 @@ public class Memo {
     public Memo(String name, String password, String content, Date date) {
         this.name = name;
         this.password = password;
-        Content = content;
+        this.Content = content;
         this.date = date;
     }
 
@@ -31,7 +32,7 @@ public class Memo {
         this.password = password;
     }
     public void setContent(String content) {
-        Content = content;
+        this.Content = content;
     }
     public void setDate(Date date) {
         this.date = date;
@@ -52,10 +53,13 @@ public class Memo {
         return date;
     }
 
+    // 메모 출력하기
     public void printMemo() {
         System.out.printf("\n이름: %s\n내용: %s",this.getName(),this.getContent());
-        // 날짜 출력 형식
-        System.out.printf("");
+        // 날짜 출력 형식 반영해야 함.
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
+        String formatedNow = formatter.format(this.date);
+        System.out.printf("\n작성일자: %s",formatedNow);
     }
 
 }
