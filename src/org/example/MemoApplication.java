@@ -18,6 +18,7 @@ public class MemoApplication {
         System.out.println("원하는 항목 번호를 입력해주세요\n");
         System.out.println("1. 입력 2. 목록 보기 3. 수정 4. 삭제 5. 종료 메뉴");
         System.out.print("번호를 입력해주세요: ");
+
         handleMainMemoInput();
     }
 
