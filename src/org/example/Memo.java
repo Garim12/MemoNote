@@ -13,6 +13,9 @@ public class Memo {
     // 컴퓨터 시스템의 날짜와 시간을 자동으로 저장) 가지고 있다.
     // 수정 시, 수정 시간으로
 
+    // 기본생성자
+    public Memo(){};
+
     // 생성자 메서드 영역
     public Memo(String name, String password, String content, Date date) {
         this.name = name;
@@ -61,5 +64,4 @@ public class Memo {
         String formatedNow = formatter.format(this.date);
         System.out.printf("\n작성일자: %s",formatedNow);
     }
-
 }

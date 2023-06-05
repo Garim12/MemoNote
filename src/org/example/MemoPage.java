@@ -43,8 +43,6 @@ public class MemoPage {
     // 메모 삭제하기
     public void deleteMemo(int delId) {
         memoList.deleteMemo(delId);
-
-
     }
     
     // 메모 수정하기
@@ -54,9 +52,7 @@ public class MemoPage {
 
 
     // 비밀번호 확인
-    private static void checkPwForm() {
-        // 비밀번호 확인은 수정, 삭제 기능 하는 분들의 상의가 필요.
+    static boolean checkPwForm(Memo memo, String password) {
+        return memo.getPassword().equals(password);
     }
-
-
 }
