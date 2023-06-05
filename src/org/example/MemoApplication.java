@@ -17,6 +17,7 @@ public class MemoApplication {
         System.out.println(" [[ Memo NOTE ]] ");
         System.out.println("원하는 항목 번호를 입력해주세요\n");
         System.out.println("1. 입력 2. 목록 보기 3. 수정 4. 삭제 5. 종료 메뉴");
+        System.out.print("번호를 입력해주세요: ");
 
         handleMainMemoInput();
     }
@@ -53,13 +54,13 @@ public class MemoApplication {
         Scanner scanner = new Scanner(System.in);
 
         if (input >= 1) {
-            System.out.println("이름을 입력해주세요: ");
+            System.out.print("이름을 입력해주세요: ");
             String name = scanner.nextLine();
 
-            System.out.println("비밀번호를 입력해주세요: ");
+            System.out.print("비밀번호를 입력해주세요: ");
             String passwd = scanner.nextLine();
 
-            System.out.println("메모를 입력해주세요: ");
+            System.out.print("메모를 입력해주세요: ");
             String content = scanner.nextLine();
             Date now = new Date(); // 현재 날짜 지정.
 
@@ -87,7 +88,7 @@ public class MemoApplication {
 
         memoPage.printMemoList();
         System.out.println("\n=====================================");
-        System.out.println("수정할 글 번호 입력: ");
+        System.out.print("수정할 글 번호 입력: ");
         int editNum = scanner.nextInt();
 
         memoPage.editMemo(editNum);
@@ -100,7 +101,7 @@ public class MemoApplication {
 
         memoPage.printMemoList();
         System.out.println("\n=====================================");
-        System.out.println("삭제할 글 번호 입력: ");
+        System.out.print("삭제할 글 번호 입력: ");
         int delNum = scanner.nextInt();
 
         memoPage.deleteMemo(delNum);
