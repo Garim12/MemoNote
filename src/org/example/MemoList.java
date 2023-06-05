@@ -95,5 +95,4 @@ public class MemoList {
             return 0;
         }
     }
-
 }
