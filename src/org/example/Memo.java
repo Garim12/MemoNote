@@ -15,6 +15,7 @@ public class Memo {
 
     // 기본생성자
     public Memo(){};
+    
 
     // 생성자 메서드 영역
     public Memo(String name, String password, String content, Date date) {
