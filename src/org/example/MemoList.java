@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class MemoList {
     private List<Memo> memoList;
@@ -57,10 +58,29 @@ public class MemoList {
     public void deleteMemo(int delNum) {
         Memo deleteMemo = getMemo(delNum); // 삭제할 Memo
 
+        if (deleteMemo != null) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("비밀번호를 입력하세요: ");
+            String password = scanner.nextLine();
 
+            if (password.equals(deleteMemo.getPassword())) {
+                memoList.remove(deleteMemo);
+                reindexMemo(); // 글 삭제 후 글 번호 다시 붙여주기
+                System.out.println("글이 삭제되었습니다.");
+            } else {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+            }
+        } else {
+            System.out.println("존재하지 않는 글입니다.");
+        }
     }
 
     // 삭제후 글 번호 다시 붙여주기.
     // 글이 삭제된 후 새 글이 입력될 때 idx가 기존 idx값에 이어서 1씩 증가할 수 있도록 count의 값을 수정한다.
+    private void reindexMemo() {
+        for (int i = 0; i < memoList.size(); i++) {
+            memoList.get(i).setId(i + 1);
+        }
+    }
 
 }
