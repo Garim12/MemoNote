@@ -60,7 +60,7 @@ public class MemoList {
 
         if (deleteMemo != null) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("비밀번호를 입력하세요: ");
+            System.out.print("비밀번호를 입력하세요: ");
             String password = scanner.nextLine();
 
             if (password.equals(deleteMemo.getPassword())) {
