@@ -31,7 +31,7 @@ public class MemoList {
         List<Memo> sortMemoList = new ArrayList<>();
         sortMemoList.addAll(memoList);
 
-        Collections.sort(sortMemoList, new idComparator());
+        Collections.sort(sortMemoList, new org.example.idComparator());
 
         for (Memo memo : sortMemoList) {
             if (memo != null) {
@@ -53,61 +53,70 @@ public class MemoList {
 
     // 해당되는 글 1건 수정하는 메서드
     public void editMemo(int editNum) {
-        Memo editMemo = getMemo(editNum); // 수정할 Memo
+        if (memoList.size() > 0) {
+            Memo editMemo = getMemo(editNum); // 수정할 Memo
+            if (editMemo != null) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("비밀번호를 입력하세요: ");
 
-        if(editMemo != null){
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("비밀번호를 입력하세요: ");
-            String password = scanner.nextLine();
+                String password = scanner.nextLine();
 
-            if (password.equals(editMemo.getPassword())) {
-                System.out.print("수정할 이름을 입력해주세요: ");
-                String modifyName = scanner.nextLine();
+                if (password.equals(editMemo.getPassword())) {
+                    System.out.print("수정할 이름을 입력해주세요: ");
+                    String modifyName = scanner.nextLine();
 
-                System.out.print("수정할 메모를 입력해주세요: ");
-                String modifyContent = scanner.nextLine();
-                Date modifyDate = new Date(); // 현재 날짜 지정.
+                    System.out.print("수정할 메모를 입력해주세요: ");
+                    String modifyContent = scanner.nextLine();
+                    Date modifyDate = new Date(); // 현재 날짜 지정.
 
-                //id랑 date는 MemoPage에서 할 예정
-                Memo memo = new Memo();
+                    //id랑 date는 MemoPage에서 할 예정
+                    Memo memo = new Memo();
 
-                memo.setId(editNum);
-                memo.setName(modifyName);
-                memo.setContent(modifyContent);
-                memo.setDate(modifyDate);
-                memo.setPassword(editMemo.getPassword());
+                    memo.setId(editNum);
+                    memo.setName(modifyName);
+                    memo.setContent(modifyContent);
+                    memo.setDate(modifyDate);
+                    memo.setPassword(editMemo.getPassword());
 
-                int key = editNum-1;
+                    int key = editNum - 1;
 
-                memoList.set(key, memo);
-                System.out.println("메모가 수정되었습니다.");
-                displayMainPage();
+                    memoList.set(key, memo);
+                    System.out.println("메모가 수정되었습니다.");
+                    displayMainPage();
+                } else {
+                    System.out.println("비밀번호가 일치하지 않습니다.");
+                }
             } else {
-                System.out.println("비밀번호가 일치하지 않습니다.");
+                System.out.println("존재하지 않는 글입니다.");
             }
-        } else {
-            System.out.println("존재하지 않는 글입니다.");
+        }
+        else {
+            System.out.println("글이 없다");
         }
     }
 
     // 해당 글 삭제하는 메서드
     public void deleteMemo(int delNum) {
-        Memo deleteMemo = getMemo(delNum); // 삭제할 Memo
+        if (memoList.size() > 0) {
+            Memo deleteMemo = getMemo(delNum); // 삭제할 Memo
 
-        if (deleteMemo != null) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("비밀번호를 입력하세요: ");
-            String password = scanner.nextLine();
+            if (deleteMemo != null) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("비밀번호를 입력하세요: ");
+                String password = scanner.nextLine();
 
-            if (password.equals(deleteMemo.getPassword())) {
-                memoList.remove(deleteMemo);
-                reindexMemo(); // 글 삭제 후 글 번호 다시 붙여주기
-                System.out.println("글이 삭제되었습니다.");
+                if (password.equals(deleteMemo.getPassword())) {
+                    memoList.remove(deleteMemo);
+                    reindexMemo(); // 글 삭제 후 글 번호 다시 붙여주기
+                    System.out.println("글이 삭제되었습니다.");
+                } else {
+                    System.out.println("비밀번호가 일치하지 않습니다.");
+                }
             } else {
-                System.out.println("비밀번호가 일치하지 않습니다.");
+                System.out.println("존재하지 않는 글입니다.");
             }
         } else {
-            System.out.println("존재하지 않는 글입니다.");
+            System.out.println("글이 없다");
         }
     }
 
