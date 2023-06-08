@@ -10,12 +10,9 @@ public class Memo {
     private String password; // 비밀번호
     private String Content; // 메모 내용
     private Date date; // 작성일
-    // 컴퓨터 시스템의 날짜와 시간을 자동으로 저장) 가지고 있다.
-    // 수정 시, 수정 시간으로
 
     // 기본생성자
     public Memo(){};
-
 
     // 생성자 메서드 영역
     public Memo(String name, String password, String content, Date date) {
@@ -60,7 +57,6 @@ public class Memo {
     // 메모 출력하기
     public void printMemo() {
         System.out.printf("\n이름: %s\n내용: %s",this.getName(),this.getContent());
-        // 날짜 출력 형식 반영해야 함.
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분 ss초");
         String formatedNow = formatter.format(this.date);
         System.out.printf("\n작성일자: %s",formatedNow);

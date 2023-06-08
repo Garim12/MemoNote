@@ -13,9 +13,6 @@ public class MemoList {
     }
 
     // setter() , getter()
-/*    public void setMomoList(List<Memo> memoList) {
-        this.memoList = memoList;
-    }*/
     public List<Memo> getMemoList() {
         return memoList;
     }
@@ -91,7 +88,7 @@ public class MemoList {
             }
         }
         else {
-            System.out.println("글이 없다");
+            System.out.println("수정할 글이 없습니다");
         }
     }
 
@@ -116,7 +113,7 @@ public class MemoList {
                 System.out.println("존재하지 않는 글입니다.");
             }
         } else {
-            System.out.println("글이 없다");
+            System.out.println("삭제할 글이 없습니다");
         }
     }
 
