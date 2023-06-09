@@ -16,11 +16,60 @@
 해당 프로젝트는 "**메모장 프로그램**" 입니다.<br/>
 사용자가 메모 내용을 저장하고 비밀번호를 통해 수정 및 삭제가 가능합니다.<br/>
 
-<br/><br/><br/>
+<br/>
 
+## 메인 페이지
+```java
+    public static void displayMainPage() {
+        System.out.println("\n=====================================");
+        System.out.println(" [[ Memo NOTE ]] ");
+        System.out.println("원하는 항목 번호를 입력해주세요\n");
+        System.out.println("1. 입력 2. 목록 보기 3. 수정 4. 삭제 5. 종료 메뉴");
+        System.out.print("번호를 입력해주세요: ");
+
+        handleMainMemoInput();
+    }
+    
+    private static void handleMainMemoInput() {
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
+
+        switch (input) {
+            case 1: // 입력 기능
+                displayNewMemo(input);
+                break;
+            case 2: // 목록 보기
+                displayMemoList(input);
+                break;
+            case 3: // 수정 기능
+                displayEditMemo(input);
+                break;
+            case 4: // 삭제 기능
+                displayDeleteMemo(input);
+                break;
+            case 5: // 종료 기능
+                break;
+            default:
+                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                //handleMainMemoInput(); // 재귀호출
+                break;
+        }
+    }
+```
+![image](https://github.com/Chaeyounglim/MemoNote/assets/55676554/1b09d725-da0f-4e31-a160-fd8b29c7cbf3)
+<br/>
+
+* 메인 페이지에서 입력, 목록 조회, 수정, 삭제를 수행할 수 있습니다. <br/>
+* handleMainMemoInput() 메서드를 실행하여 입력값에 따라 수행합니다.
+* 5번을 입력할 경우, 프로그램을 종료할 수 있습니다. <br/><br/>
+
+
+<br/><br/>
 
 ## 요구 기능 사항
 ### 1. 입력 기능<br/>
+
+
 - 이름, 비밀번호, 메모를 스캐너를 통해 입력 받는다. <br/>
 - 1건의 글을 생성 및 메모 리스트에 저장한다. <br/> <br/>
 ![image](https://github.com/Chaeyounglim/MemoNote/assets/55676554/9099e2cf-0f2d-4804-bd73-618155a5fea0)
