@@ -137,6 +137,93 @@ class idComparator implements Comparator<Memo> {
 **Comparator interface** 를 상속받아 idComparator 클래스를 생성하였습니다.<br/>
 compare() 메서드를 오버라이딩 하였습니다. <br/><br/><br/>
 
+<br/>
+
+## 요구사항 기능 테스트
+* 기능을 모두 구현한 후에 콘솔창에서 직접 테스트를 해보았습니다.<br/>
+* 기능 요구사항에 맞게 정상적으로 실행이 되는지에 여부를 판단하기 위함 입니다.<br/>
+* 첫번째 테스트 때, 글이 존재하지 않을 경우 오류가 나며 프로그램이 종료되었습니다.<br/><br/>
+![image](https://github.com/Chaeyounglim/MemoNote/assets/55676554/bf92a841-4ac4-40e5-a46c-45f1e7bfc6ea)
+<br/><br/>
+
+* 메모 수정시 해당 조건에 만족하는 메모가 없을 경우<br/>
+```java
+    public void editMemo(int editNum) {
+        if (memoList.size() > 0) {
+            Memo editMemo = getMemo(editNum); // 수정할 Memo
+            if (editMemo != null) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("비밀번호를 입력하세요: ");
+
+                String password = scanner.nextLine();
+
+                if (password.equals(editMemo.getPassword())) {
+                    System.out.print("수정할 이름을 입력해주세요: ");
+                    String modifyName = scanner.nextLine();
+
+                    System.out.print("수정할 메모를 입력해주세요: ");
+                    String modifyContent = scanner.nextLine();
+                    Date modifyDate = new Date(); // 현재 날짜 지정.
+
+                    //id랑 date는 MemoPage에서 할 예정
+                    Memo memo = new Memo();
+
+                    memo.setId(editNum);
+                    memo.setName(modifyName);
+                    memo.setContent(modifyContent);
+                    memo.setDate(modifyDate);
+                    memo.setPassword(editMemo.getPassword());
+
+                    int key = editNum - 1;
+
+                    memoList.set(key, memo);
+                    System.out.println("메모가 수정되었습니다.");
+                    displayMainPage();
+                } else {
+                    System.out.println("비밀번호가 일치하지 않습니다.");
+                }
+            } else {
+                System.out.println("존재하지 않는 글입니다.");
+            }
+        }
+        else {
+            System.out.println("수정할 글이 없습니다");
+        }
+    }
+```
+<br/>
+
+* 메모 삭제시 해당 조건에 만족하는 메모가 없을 경우<br/>
+```java
+    public void deleteMemo(int delNum) {
+        if (memoList.size() > 0) {
+            Memo deleteMemo = getMemo(delNum); // 삭제할 Memo
+
+            if (deleteMemo != null) {
+                Scanner scanner = new Scanner(System.in);
+                System.out.print("비밀번호를 입력하세요: ");
+                String password = scanner.nextLine();
+
+                if (password.equals(deleteMemo.getPassword())) {
+                    memoList.remove(deleteMemo);
+                    reindexMemo(); // 글 삭제 후 글 번호 다시 붙여주기
+                    System.out.println("글이 삭제되었습니다.");
+                } else {
+                    System.out.println("비밀번호가 일치하지 않습니다.");
+                }
+            } else {
+                System.out.println("존재하지 않는 글입니다.");
+            }
+        } else {
+            System.out.println("삭제할 글이 없습니다");
+        }
+    }
+```
+ -> ***해당 예외를 추가적으로 처리하고, 다시 테스트하여 모든 요구사항을 충족시켰습니다.***
+<br/><br/>
+
+
+<br/>
 
 ## 환경설정
 Language : Java IDLE : IntelliJ community <br/>
